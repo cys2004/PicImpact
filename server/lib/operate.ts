@@ -173,10 +173,10 @@ export async function insertImages(json: any[]) {
           lat: image.lat,
           lon: image.lon,
           songname: image.songname,
-          artist: image.artist
-          songurl: image.songurl
-          coverurl: image.coverurl
-          lrcurl: image.lrcurl
+          artist: image.artist,
+          songurl: image.songurl,
+          coverurl: image.coverurl,
+          lrcurl: image.lrcurl,
           show: 1,
           sort: image.sort,
           create_time: image.create_time,

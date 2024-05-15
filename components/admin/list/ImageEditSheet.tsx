@@ -109,16 +109,33 @@ export default function ImageEditSheet(props : Readonly<ImageServerHandleProps &
               placeholder="0"
             />
             <Input
-              value={String(image?.lon)}
-              onValueChange={(value) => setImageEditData({ ...image, lon: value })}
+              value={String(image?.songname)}
+              onValueChange={(value) => setImageEditData({ ...image, songname: value })}
               variant="bordered"
-              label="经度"
+              label="歌曲名称"
+            /><Input
+              value={String(image?.artist)}
+              onValueChange={(value) => setImageEditData({ ...image, artist: value })}
+              variant="bordered"
+              label="艺术家"
             />
             <Input
-              value={String(image?.lat)}
-              onValueChange={(value) => setImageEditData({ ...image, lat: value })}
+              value={String(image?.songurl)}
+              onValueChange={(value) => setImageEditData({ ...image, songurl: value })}
               variant="bordered"
-              label="纬度"
+              label="歌曲链接"
+            />
+            <Input
+              value={String(image?.coverurl)}
+              onValueChange={(value) => setImageEditData({ ...image, coverurl: value })}
+              variant="bordered"
+              label="封面链接"
+            />
+            <Input
+              value={String(image?.lrcurl)}
+              onValueChange={(value) => setImageEditData({ ...image, lrcurl: value })}
+              variant="bordered"
+              label="歌词链接"
             />
             <Input
               value={String(image?.sort)}
