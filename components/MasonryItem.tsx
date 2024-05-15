@@ -24,8 +24,6 @@ export default function MasonryItem() {
     lrc: MasonryViewData?.lrcurl || '',
   };
 
-  console.log(songData);
-
   return (
     <Dialog
       defaultOpen={false}
