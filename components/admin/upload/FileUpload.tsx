@@ -26,6 +26,11 @@ export default function FileUpload() {
   const [height, setHeight] = useState(0)
   const [lat, setLat] = useState('')
   const [lon, setLon] = useState('')
+  const [songname, setSongName] = useState('')
+  const [artist, setArtist] = useState('')
+  const [songurl, setSongUrl] = useState('')
+  const [coverurl, setCoverUrl] = useState('')
+  const [lrcurl, setLrcUrl] = useState('')
   const [detail, setDetail] = useState('')
 
   const { data, isLoading } = useSWR('/api/v1/get-tags', fetcher)
@@ -118,6 +123,11 @@ export default function FileUpload() {
         height: height,
         lat: lat,
         lon: lon,
+        songname: songname,
+        artist: artist,
+        songurl: songurl,
+        coverurl: coverurl,
+        lrcurl: lrcurl,
       } as ImageType
       const res = await fetch('/api/v1/image-add', {
         headers: {
@@ -284,6 +294,11 @@ export default function FileUpload() {
       setHeight(0)
       setLat('')
       setLon('')
+      setSongName('')
+      setArtist('')
+      setSongUrl('')
+      setCoverUrl('')
+      setLrcUrl('')
       setPreviewUrl('')
     }
   }
@@ -398,9 +413,6 @@ export default function FileUpload() {
                 <InboxOutlined/>
               </p>
               <p className="ant-upload-text">点击上传文件或拖拽文件到这里</p>
-              <p className="ant-upload-hint">
-                Vercel 等平台 Free 订阅限制上传大小 6M。
-              </p>
             </Dragger>
           </ConfigProvider>
         </CardBody>
@@ -451,19 +463,45 @@ export default function FileUpload() {
               <div className="flex items-center space-x-1 w-full">
                 <Input
                   size="sm"
-                  value={lon}
-                  onValueChange={(value) => setLon(value)}
-                  type="number"
+                  value={songname}
+                  onValueChange={(value) => setSongName(value)}
+                  type="text"
                   variant="bordered"
-                  label="经度"
+                  label="歌曲名称"
                 />
                 <Input
                   size="sm"
-                  value={lat}
-                  onValueChange={(value) => setLat(value)}
-                  type="number"
+                  value={artist}
+                  onValueChange={(value) => setArtist(value)}
+                  type="text"
                   variant="bordered"
-                  label="纬度"
+                  label="艺术家"
+                />
+              </div>
+              <div className="flex items-center space-x-1 w-full">
+                <Input
+                  size="sm"
+                  value={songurl}
+                  onValueChange={(value) => setSongUrl(value)}
+                  type="text"
+                  variant="bordered"
+                  label="歌曲文件地址"
+                />
+                <Input
+                  size="sm"
+                  value={coverurl}
+                  onValueChange={(value) => setCoverUrl(value)}
+                  type="text"
+                  variant="bordered"
+                  label="歌曲封面地址"
+                />
+                <Input
+                  size="sm"
+                  value={lrcurl}
+                  onValueChange={(value) => setLrcUrl(value)}
+                  type="text"
+                  variant="bordered"
+                  label="歌词地址"
                 />
               </div>
               <Input

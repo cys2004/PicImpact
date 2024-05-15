@@ -85,6 +85,11 @@ export async function insertImage(image: ImageType) {
         detail: image.detail,
         lat: String(image.lat),
         lon: String(image.lon),
+        songname: String(image.songname),
+        artist: String(image.artist),
+        songurl: String(image.songurl),
+        coverurl: String(image.coverurl),
+        lrcurl: String(image.lrcurl),
         show: 1,
         sort: image.sort,
         del: 0
@@ -143,6 +148,11 @@ export async function updateImage(image: ImageType) {
       height: image.height,
       lat: image.lat,
       lon: image.lon,
+      songname: image.songname,
+      artist: image.artist,
+      songurl: image.songurl,
+      coverurl: image.coverurl,
+      lrcurl: image.lrcurl,
       update_time: new Date(),
     }
   }
@@ -162,6 +172,11 @@ export async function insertImages(json: any[]) {
           detail: image.detail,
           lat: image.lat,
           lon: image.lon,
+          songname: image.songname,
+          artist: image.artist
+          songurl: image.songurl
+          coverurl: image.coverurl
+          lrcurl: image.lrcurl
           show: 1,
           sort: image.sort,
           create_time: image.create_time,

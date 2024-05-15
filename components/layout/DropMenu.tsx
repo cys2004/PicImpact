@@ -98,13 +98,6 @@ export const DropMenu = () => {
               >
                 { theme === 'light' ? '切换至⌈常夜⌋' : '切换至⌈白夜⌋' }
               </DropdownItem>
-              <DropdownItem
-                key="github"
-                startContent={<Github size={20} className={iconClasses} />}
-                onClick={() => router.push('https://github.com/besscroft')}
-              >
-                GitHub
-              </DropdownItem>
             </DropdownMenu>
         }
     </Dropdown>

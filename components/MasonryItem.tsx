@@ -6,13 +6,25 @@ import {
 import { useButtonStore } from '~/app/providers/button-store-Providers'
 import { ImageType } from '~/types'
 import { Image, Tabs, Tab, Card, CardHeader } from '@nextui-org/react'
-import { Aperture } from 'lucide-react'
+import { Aperture,MessageSquareText } from 'lucide-react'
 import { Twikoo } from '../components/Twikoo'
+import ReactAplayer from '../components/APlayer'
+import React from 'react'
 
 export default function MasonryItem() {
   const { MasonryView, MasonryViewData, setMasonryView, setMasonryViewData } = useButtonStore(
     (state) => state,
   )
+
+  const songData = {
+    name: MasonryViewData?.songname || '',
+    artist: MasonryViewData?.artist || '',
+    url: MasonryViewData?.songurl || '',
+    cover: MasonryViewData?.coverurl || '',
+    lrc: MasonryViewData?.lrcurl || '',
+  };
+
+  console.log(songData);
 
   return (
     <Dialog
@@ -26,9 +38,6 @@ export default function MasonryItem() {
       }}
     >
       <DialogContent className="flex flex-col">
-        <div>
-          <p>{MasonryViewData.detail}</p>
-        </div>
         <div className="h-full flex flex-col space-y-2 md:grid md:gap-2 md:grid-cols-3 xl:gap-4">
           <div className="md:col-span-2 md:flex md:justify-center md:max-h-[90vh]">
             <Image
@@ -51,9 +60,12 @@ export default function MasonryItem() {
                 }
               >
                 <div className="flex flex-col space-y-2">
+
+                  <ReactAplayer songInfo={songData} />
+
                   <Card className="py-4" shadow="sm">
                     <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                      <p className="text-tiny uppercase font-bold">相片描述</p>
+                      <p className="text-tiny uppercase font-bold">图片描述</p>
                       <h4 className="font-bold text-large">{MasonryViewData.detail || 'N&A'}</h4>
                     </CardHeader>
                   </Card>
@@ -63,12 +75,12 @@ export default function MasonryItem() {
                 key="comments"
                 title={
                   <div className="flex items-center space-x-2">
-                    {/* 可以替换为评论相关的图标 */}
+                    <MessageSquareText/>
                     <span>评论</span>
                   </div>
                 }
               >
-              <Twikoo />
+                <Twikoo imgUrl={MasonryViewData.url} />
               </Tab>
             </Tabs>
           </div>

@@ -62,6 +62,11 @@ export type ImageType = {
   height: number;
   lon: string;
   lat: string;
+  songname: string
+  artist: string
+  songurl: string
+  coverurl: string
+  lrcurl: string
   tag: string;
   detail: string;
   show: number;
